@@ -1,0 +1,35 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://techgit.meitu.com/iosmodules/specs.git'
+
+platform :ios, "8.0"
+
+workspace 'MTGLDebug'
+
+target 'MTGLDebugDemo' do
+
+  project 'MTGLDebugDemo'
+
+  pod 'MTGLDebug', :path => '../'
+
+  target 'MTGLDebugDemoTests' do
+    
+  end
+
+  target 'MTGLDebugDemoUITests' do
+  end
+
+  # 开启所有 pod 引入库的 ccache，加快重复编译速度
+  post_install do |installer_representation|
+      installer_representation.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+              #关闭 Enable Modules
+              config.build_settings['CLANG_ENABLE_MODULES'] = 'NO'
+
+              # 在生成的 Pods 项目文件中加入 CC 参数，路径的值根据你自己的项目来修改
+              config.build_settings['CC'] = '$(PODS_ROOT)/../ccache-clang'
+          end
+      end
+  end
+
+end
+

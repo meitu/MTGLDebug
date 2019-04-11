@@ -1,0 +1,742 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A2D09FD8EF76F677B64B893 /* libPods-MTGLDebugDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A278FF402A9545DF834D1E /* libPods-MTGLDebugDemo.a */; };
+		0E7016A77F7269874C076FFC /* libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8063511BE410B734BC8CEE73 /* libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a */; };
+		20DC169B1ECDAAD500694EB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC169A1ECDAAD500694EB9 /* main.m */; };
+		20DC169E1ECDAAD500694EB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC169D1ECDAAD500694EB9 /* AppDelegate.m */; };
+		20DC16A11ECDAAD500694EB9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC16A01ECDAAD500694EB9 /* ViewController.m */; };
+		20DC16A41ECDAAD500694EB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DC16A21ECDAAD500694EB9 /* Main.storyboard */; };
+		20DC16A61ECDAAD500694EB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DC16A51ECDAAD500694EB9 /* Assets.xcassets */; };
+		20DC16A91ECDAAD500694EB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DC16A71ECDAAD500694EB9 /* LaunchScreen.storyboard */; };
+		20DC16BF1ECDAAD500694EB9 /* MTGLDebugDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DC16BE1ECDAAD500694EB9 /* MTGLDebugDemoUITests.m */; };
+		20F5F761224CAAD900EE9B22 /* MTGLDebugDemoTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 20F5F760224CAAD900EE9B22 /* MTGLDebugDemoTests.mm */; };
+		20F5F763224CAE9000EE9B22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F5F762224CAE8F00EE9B22 /* CoreGraphics.framework */; };
+		20F5F769224CAFB700EE9B22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F5F768224CAFB700EE9B22 /* QuartzCore.framework */; };
+		C07DC9251E6396C05095D567 /* libPods-MTGLDebugDemo-MTGLDebugDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4039DDC568650ADA89D98650 /* libPods-MTGLDebugDemo-MTGLDebugDemoTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20DC16B01ECDAAD500694EB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20DC168E1ECDAAD500694EB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20DC16951ECDAAD500694EB9;
+			remoteInfo = MTGLDebugDemo;
+		};
+		20DC16BB1ECDAAD500694EB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20DC168E1ECDAAD500694EB9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20DC16951ECDAAD500694EB9;
+			remoteInfo = MTGLDebugDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1134333053ECC65A8DF89290 /* Pods-MTGLDebugDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo/Pods-MTGLDebugDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2003F03F224E3A9B00950D45 /* MTGLDebug 排查实例.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "MTGLDebug 排查实例.pdf"; sourceTree = "<group>"; };
+		2003F040224E3A9B00950D45 /* 15476220694829.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15476220694829.png; sourceTree = "<group>"; };
+		2003F042224E3A9B00950D45 /* 15476220507607.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15476220507607.jpg; sourceTree = "<group>"; };
+		2003F043224E3A9B00950D45 /* 四种错误类型.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "四种错误类型.md"; sourceTree = "<group>"; };
+		2003F044224E3A9B00950D45 /* QQ20181220-105241.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ20181220-105241.png"; sourceTree = "<group>"; };
+		2003F045224E3A9B00950D45 /* 15476220446895.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15476220446895.jpg; sourceTree = "<group>"; };
+		2003F046224E3A9B00950D45 /* MTGLDebug Doc.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "MTGLDebug Doc.md"; sourceTree = "<group>"; };
+		2003F047224E3A9B00950D45 /* 15475418209495.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15475418209495.jpg; sourceTree = "<group>"; };
+		20DC16961ECDAAD500694EB9 /* MTGLDebugDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTGLDebugDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20DC169A1ECDAAD500694EB9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20DC169C1ECDAAD500694EB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		20DC169D1ECDAAD500694EB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		20DC169F1ECDAAD500694EB9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		20DC16A01ECDAAD500694EB9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		20DC16A31ECDAAD500694EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		20DC16A51ECDAAD500694EB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20DC16A81ECDAAD500694EB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		20DC16AA1ECDAAD500694EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DC16AF1ECDAAD500694EB9 /* MTGLDebugDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTGLDebugDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20DC16B51ECDAAD500694EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DC16BA1ECDAAD500694EB9 /* MTGLDebugDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTGLDebugDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20DC16BE1ECDAAD500694EB9 /* MTGLDebugDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTGLDebugDemoUITests.m; sourceTree = "<group>"; };
+		20DC16C01ECDAAD500694EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DC16CF1ECE929900694EB9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		20DC16D31ECE92EC00694EB9 /* MTGLDebug.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MTGLDebug.podspec; path = ../MTGLDebug.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		20DC16D51ECE930800694EB9 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		20DC16D61ECE930800694EB9 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
+		20F5F760224CAAD900EE9B22 /* MTGLDebugDemoTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MTGLDebugDemoTests.mm; sourceTree = "<group>"; };
+		20F5F762224CAE8F00EE9B22 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		20F5F764224CAEDF00EE9B22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		20F5F766224CAEEE00EE9B22 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		20F5F768224CAFB700EE9B22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		29A278FF402A9545DF834D1E /* libPods-MTGLDebugDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTGLDebugDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4039DDC568650ADA89D98650 /* libPods-MTGLDebugDemo-MTGLDebugDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTGLDebugDemo-MTGLDebugDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8063511BE410B734BC8CEE73 /* libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C058A273E14786B71715136 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo-MTGLDebugDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo-MTGLDebugDemoTests/Pods-MTGLDebugDemo-MTGLDebugDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		938129CCE748F623D5E8171D /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo-MTGLDebugDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo-MTGLDebugDemoUITests/Pods-MTGLDebugDemo-MTGLDebugDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5744B73828A469520EE7C05 /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo-MTGLDebugDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo-MTGLDebugDemoUITests/Pods-MTGLDebugDemo-MTGLDebugDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CAB802545212FBCE4C25527B /* Pods-MTGLDebugDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo/Pods-MTGLDebugDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D8EDDBEBD6271B7BA2582197 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MTGLDebugDemo-MTGLDebugDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MTGLDebugDemo-MTGLDebugDemoTests/Pods-MTGLDebugDemo-MTGLDebugDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20DC16931ECDAAD500694EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A2D09FD8EF76F677B64B893 /* libPods-MTGLDebugDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16AC1ECDAAD500694EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20F5F769224CAFB700EE9B22 /* QuartzCore.framework in Frameworks */,
+				20F5F763224CAE9000EE9B22 /* CoreGraphics.framework in Frameworks */,
+				C07DC9251E6396C05095D567 /* libPods-MTGLDebugDemo-MTGLDebugDemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16B71ECDAAD500694EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E7016A77F7269874C076FFC /* libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1512F4B8027AC44EFE8A07CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20F5F768224CAFB700EE9B22 /* QuartzCore.framework */,
+				20F5F766224CAEEE00EE9B22 /* OpenGLES.framework */,
+				20F5F764224CAEDF00EE9B22 /* UIKit.framework */,
+				20F5F762224CAE8F00EE9B22 /* CoreGraphics.framework */,
+				29A278FF402A9545DF834D1E /* libPods-MTGLDebugDemo.a */,
+				4039DDC568650ADA89D98650 /* libPods-MTGLDebugDemo-MTGLDebugDemoTests.a */,
+				8063511BE410B734BC8CEE73 /* libPods-MTGLDebugDemo-MTGLDebugDemoUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2003F03E224E3A9B00950D45 /* Doc */ = {
+			isa = PBXGroup;
+			children = (
+				2003F03F224E3A9B00950D45 /* MTGLDebug 排查实例.pdf */,
+				2003F040224E3A9B00950D45 /* 15476220694829.png */,
+				2003F042224E3A9B00950D45 /* 15476220507607.jpg */,
+				2003F043224E3A9B00950D45 /* 四种错误类型.md */,
+				2003F044224E3A9B00950D45 /* QQ20181220-105241.png */,
+				2003F045224E3A9B00950D45 /* 15476220446895.jpg */,
+				2003F046224E3A9B00950D45 /* MTGLDebug Doc.md */,
+				2003F047224E3A9B00950D45 /* 15475418209495.jpg */,
+			);
+			name = Doc;
+			path = ../Doc;
+			sourceTree = "<group>";
+		};
+		20DC168D1ECDAAD500694EB9 = {
+			isa = PBXGroup;
+			children = (
+				2003F03E224E3A9B00950D45 /* Doc */,
+				1512F4B8027AC44EFE8A07CD /* Frameworks */,
+				20DC16981ECDAAD500694EB9 /* MTGLDebugDemo */,
+				20DC16B21ECDAAD500694EB9 /* MTGLDebugDemoTests */,
+				20DC16BD1ECDAAD500694EB9 /* MTGLDebugDemoUITests */,
+				20DC16CC1ECE927C00694EB9 /* Pod Metadata */,
+				4D943B9BE89B4387BE4B194C /* Pods */,
+				20DC16971ECDAAD500694EB9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20DC16971ECDAAD500694EB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20DC16961ECDAAD500694EB9 /* MTGLDebugDemo.app */,
+				20DC16AF1ECDAAD500694EB9 /* MTGLDebugDemoTests.xctest */,
+				20DC16BA1ECDAAD500694EB9 /* MTGLDebugDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20DC16981ECDAAD500694EB9 /* MTGLDebugDemo */ = {
+			isa = PBXGroup;
+			children = (
+				20DC16991ECDAAD500694EB9 /* Supporting Files */,
+				20DC169C1ECDAAD500694EB9 /* AppDelegate.h */,
+				20DC169D1ECDAAD500694EB9 /* AppDelegate.m */,
+				20DC16A51ECDAAD500694EB9 /* Assets.xcassets */,
+				20DC16AA1ECDAAD500694EB9 /* Info.plist */,
+				20DC16A71ECDAAD500694EB9 /* LaunchScreen.storyboard */,
+				20DC16A21ECDAAD500694EB9 /* Main.storyboard */,
+				20DC169F1ECDAAD500694EB9 /* ViewController.h */,
+				20DC16A01ECDAAD500694EB9 /* ViewController.m */,
+			);
+			path = MTGLDebugDemo;
+			sourceTree = "<group>";
+		};
+		20DC16991ECDAAD500694EB9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20DC169A1ECDAAD500694EB9 /* main.m */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20DC16B21ECDAAD500694EB9 /* MTGLDebugDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				20DC16B51ECDAAD500694EB9 /* Info.plist */,
+				20F5F760224CAAD900EE9B22 /* MTGLDebugDemoTests.mm */,
+			);
+			path = MTGLDebugDemoTests;
+			sourceTree = "<group>";
+		};
+		20DC16BD1ECDAAD500694EB9 /* MTGLDebugDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				20DC16C01ECDAAD500694EB9 /* Info.plist */,
+				20DC16BE1ECDAAD500694EB9 /* MTGLDebugDemoUITests.m */,
+			);
+			path = MTGLDebugDemoUITests;
+			sourceTree = "<group>";
+		};
+		20DC16CC1ECE927C00694EB9 /* Pod Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				20DC16D61ECE930800694EB9 /* Podfile.lock */,
+				20DC16CF1ECE929900694EB9 /* README.md */,
+				20DC16D31ECE92EC00694EB9 /* MTGLDebug.podspec */,
+				20DC16D51ECE930800694EB9 /* podfile */,
+			);
+			name = "Pod Metadata";
+			sourceTree = "<group>";
+		};
+		4D943B9BE89B4387BE4B194C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAB802545212FBCE4C25527B /* Pods-MTGLDebugDemo.debug.xcconfig */,
+				1134333053ECC65A8DF89290 /* Pods-MTGLDebugDemo.release.xcconfig */,
+				8C058A273E14786B71715136 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.debug.xcconfig */,
+				D8EDDBEBD6271B7BA2582197 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.release.xcconfig */,
+				938129CCE748F623D5E8171D /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.debug.xcconfig */,
+				C5744B73828A469520EE7C05 /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20DC16951ECDAAD500694EB9 /* MTGLDebugDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20DC16C31ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemo" */;
+			buildPhases = (
+				3C29FC4DE0C1729529F62962 /* [CP] Check Pods Manifest.lock */,
+				20DC16921ECDAAD500694EB9 /* Sources */,
+				20DC16931ECDAAD500694EB9 /* Frameworks */,
+				20DC16941ECDAAD500694EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MTGLDebugDemo;
+			productName = MTGLDebugDemo;
+			productReference = 20DC16961ECDAAD500694EB9 /* MTGLDebugDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20DC16AE1ECDAAD500694EB9 /* MTGLDebugDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20DC16C61ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemoTests" */;
+			buildPhases = (
+				3620691B14A307E85D61AC69 /* [CP] Check Pods Manifest.lock */,
+				20DC16AB1ECDAAD500694EB9 /* Sources */,
+				20DC16AC1ECDAAD500694EB9 /* Frameworks */,
+				20DC16AD1ECDAAD500694EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20DC16B11ECDAAD500694EB9 /* PBXTargetDependency */,
+			);
+			name = MTGLDebugDemoTests;
+			productName = MTGLDebugDemoTests;
+			productReference = 20DC16AF1ECDAAD500694EB9 /* MTGLDebugDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		20DC16B91ECDAAD500694EB9 /* MTGLDebugDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20DC16C91ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemoUITests" */;
+			buildPhases = (
+				032FBA9C138480D610F0CBB7 /* [CP] Check Pods Manifest.lock */,
+				20DC16B61ECDAAD500694EB9 /* Sources */,
+				20DC16B71ECDAAD500694EB9 /* Frameworks */,
+				20DC16B81ECDAAD500694EB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20DC16BC1ECDAAD500694EB9 /* PBXTargetDependency */,
+			);
+			name = MTGLDebugDemoUITests;
+			productName = MTGLDebugDemoUITests;
+			productReference = 20DC16BA1ECDAAD500694EB9 /* MTGLDebugDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20DC168E1ECDAAD500694EB9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Meitu;
+				TargetAttributes = {
+					20DC16951ECDAAD500694EB9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q2K2E67T5B;
+						ProvisioningStyle = Manual;
+					};
+					20DC16AE1ECDAAD500694EB9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q2K2E67T5B;
+						ProvisioningStyle = Manual;
+						TestTargetID = 20DC16951ECDAAD500694EB9;
+					};
+					20DC16B91ECDAAD500694EB9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = Q2K2E67T5B;
+						ProvisioningStyle = Manual;
+						TestTargetID = 20DC16951ECDAAD500694EB9;
+					};
+				};
+			};
+			buildConfigurationList = 20DC16911ECDAAD500694EB9 /* Build configuration list for PBXProject "MTGLDebugDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = 20DC168D1ECDAAD500694EB9;
+			productRefGroup = 20DC16971ECDAAD500694EB9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20DC16951ECDAAD500694EB9 /* MTGLDebugDemo */,
+				20DC16AE1ECDAAD500694EB9 /* MTGLDebugDemoTests */,
+				20DC16B91ECDAAD500694EB9 /* MTGLDebugDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20DC16941ECDAAD500694EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DC16A91ECDAAD500694EB9 /* LaunchScreen.storyboard in Resources */,
+				20DC16A61ECDAAD500694EB9 /* Assets.xcassets in Resources */,
+				20DC16A41ECDAAD500694EB9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16AD1ECDAAD500694EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16B81ECDAAD500694EB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		032FBA9C138480D610F0CBB7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTGLDebugDemo-MTGLDebugDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3620691B14A307E85D61AC69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTGLDebugDemo-MTGLDebugDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C29FC4DE0C1729529F62962 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MTGLDebugDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20DC16921ECDAAD500694EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DC16A11ECDAAD500694EB9 /* ViewController.m in Sources */,
+				20DC169E1ECDAAD500694EB9 /* AppDelegate.m in Sources */,
+				20DC169B1ECDAAD500694EB9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16AB1ECDAAD500694EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20F5F761224CAAD900EE9B22 /* MTGLDebugDemoTests.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20DC16B61ECDAAD500694EB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DC16BF1ECDAAD500694EB9 /* MTGLDebugDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20DC16B11ECDAAD500694EB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20DC16951ECDAAD500694EB9 /* MTGLDebugDemo */;
+			targetProxy = 20DC16B01ECDAAD500694EB9 /* PBXContainerItemProxy */;
+		};
+		20DC16BC1ECDAAD500694EB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20DC16951ECDAAD500694EB9 /* MTGLDebugDemo */;
+			targetProxy = 20DC16BB1ECDAAD500694EB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20DC16A21ECDAAD500694EB9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20DC16A31ECDAAD500694EB9 /* Base */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		20DC16A71ECDAAD500694EB9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20DC16A81ECDAAD500694EB9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20DC16C11ECDAAD500694EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		20DC16C21ECDAAD500694EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20DC16C41ECDAAD500694EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB802545212FBCE4C25527B /* Pods-MTGLDebugDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CC = "$(SRCROOT)/ccache-clang";
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				INFOPLIST_FILE = MTGLDebugDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90fd9bc6-9729-4d23-a34c-5fa876b4cdc1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+			};
+			name = Debug;
+		};
+		20DC16C51ECDAAD500694EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1134333053ECC65A8DF89290 /* Pods-MTGLDebugDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CC = "$(SRCROOT)/ccache-clang";
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				INFOPLIST_FILE = MTGLDebugDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90fd9bc6-9729-4d23-a34c-5fa876b4cdc1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+			};
+			name = Release;
+		};
+		20DC16C71ECDAAD500694EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C058A273E14786B71715136 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"UNITTEST=1",
+				);
+				INFOPLIST_FILE = MTGLDebugDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTGLDebugDemo.app/MTGLDebugDemo";
+			};
+			name = Debug;
+		};
+		20DC16C81ECDAAD500694EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8EDDBEBD6271B7BA2582197 /* Pods-MTGLDebugDemo-MTGLDebugDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"UNITTEST=1",
+				);
+				INFOPLIST_FILE = MTGLDebugDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MTGLDebugDemo.app/MTGLDebugDemo";
+			};
+			name = Release;
+		};
+		20DC16CA1ECDAAD500694EB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 938129CCE748F623D5E8171D /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				INFOPLIST_FILE = MTGLDebugDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90fd9bc6-9729-4d23-a34c-5fa876b4cdc1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				TEST_TARGET_NAME = MTGLDebugDemo;
+			};
+			name = Debug;
+		};
+		20DC16CB1ECDAAD500694EB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5744B73828A469520EE7C05 /* Pods-MTGLDebugDemo-MTGLDebugDemoUITests.release.xcconfig */;
+			buildSettings = {
+				DEVELOPMENT_TEAM = Q2K2E67T5B;
+				INFOPLIST_FILE = MTGLDebugDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meitu.MTGLDebugDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "90fd9bc6-9729-4d23-a34c-5fa876b4cdc1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development *";
+				TEST_TARGET_NAME = MTGLDebugDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20DC16911ECDAAD500694EB9 /* Build configuration list for PBXProject "MTGLDebugDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20DC16C11ECDAAD500694EB9 /* Debug */,
+				20DC16C21ECDAAD500694EB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20DC16C31ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20DC16C41ECDAAD500694EB9 /* Debug */,
+				20DC16C51ECDAAD500694EB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20DC16C61ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20DC16C71ECDAAD500694EB9 /* Debug */,
+				20DC16C81ECDAAD500694EB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20DC16C91ECDAAD500694EB9 /* Build configuration list for PBXNativeTarget "MTGLDebugDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20DC16CA1ECDAAD500694EB9 /* Debug */,
+				20DC16CB1ECDAAD500694EB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20DC168E1ECDAAD500694EB9 /* Project object */;
+}

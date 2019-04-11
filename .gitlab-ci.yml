@@ -1,0 +1,81 @@
+#before_script会在每个job之前先执行其中的命令，注意空格，不能缩进
+before_script:
+    #打印根目录
+  - echo ~
+    #打印当前路径
+  - echo `pwd`
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+    #安装 pod 依赖
+  - cd ./MTGLDebugDemo
+  - pod install
+  - cd ..
+
+#stages为构建的顺序，每个job加入其中的stage顺序执行，相同stage下的job平行执行
+stages:
+  - pre
+  - analysis
+  - test
+  - publish
+
+# 下面定义job，就是需要服务器跑的脚本任务
+# 自动关闭bug
+job-closebug:
+  #将job加入到pre stage中
+  stage: pre
+  script:
+    - closeBugs.rb
+  tags:
+    - ios
+  only:
+    - /.*develop$|^feature.*$|^release.*$/
+  when: always
+
+# faxuspas静态分析
+job-fauxpas:
+    #将job加入到analysis stage中
+  stage: analysis
+    ################## 此处需要各自项目配置 ###############################
+    #gitlab-ci-fauxpas脚本为静态编译脚本，使用faux pas实现，需要各自项目制定target
+    #如target名为testCI，则gitlab-ci-fauxpas -t testCI
+    #如海报工程工程的target名为HBGC,则gitlab-ci-fauxpas -t HBGC
+    #fauxpas需要每个项目在根目录中配置一个名为：main.fauxpas.json的配置文本
+    #如果没有配置该文件，则会使用服务器下的默认配置
+    #这里是需要每个项目根据各自的工程名配置的，将下面的testCI改为各自项目中target名称即可
+  script:
+    - gitlab-ci-fauxpas -t MTGLDebug
+    #only 指定分支名称或者标识，使job在指定情况下构建.如下：只在master分支中的commit执行构建
+  only:
+    - /.*develop$|^feature.*$|^release.*$/
+    #tags指定执行的runner标识，服务器上已有个共享runner名为:ios
+  tags:
+    - ios
+  when: always
+
+# 运行单元测试
+job-unittest:
+  stage: test
+  script:
+    ################## 此处需要各自项目配置 ###############################
+    # 这里有两个地方需要配置，一个是workspace的路径，一个是单元测试的scheme名称
+    # xcodebuild test -workspace {workspace_path} -scheme {scehme_name} -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3'
+    # 注意scheme需要设置为shared
+    - xcodebuild test -workspace MTGLDebugDemo/MTGLDebug.xcworkspace -scheme MTGLDebugTests -destination 'platform=iOS Simulator,name=iPhone 8,OS=latest' | xcpretty -s --color
+  tags:
+    - ios
+  only:
+    - /.*develop$|^feature.*$|^release.*$/
+  when: always
+
+job-publish:
+  stage: publish
+  script:
+    ################## 此处需要各自项目配置 ###############################
+    # 下面的 MTAnalyticsBase.podspec 需要改成各自项目的 .podspec
+    # 注意，podspec里面对项目的引用方式必须是ssh，不能是http
+    - pod repo push meitu-iosmodules-specs MTGLDebug.podspec --allow-warnings --use-libraries --verbose
+  tags:
+    - ios
+  only:
+    - tags
+  when: always
