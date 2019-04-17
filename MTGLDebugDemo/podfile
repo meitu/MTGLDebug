@@ -1,5 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
-source 'http://techgit.meitu.com/iosmodules/specs.git'
 
 platform :ios, "8.0"
 

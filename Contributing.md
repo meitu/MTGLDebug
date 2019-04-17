@@ -1,6 +1,6 @@
 # Contributing to MTGLDebug
 
-Welcome to [report Issues](https://github.com/MTlab/MTGLDebug/issues) or [pull requests](https://github.com/MTlab/MTGLDebug/pulls). It's recommended to read the following Contributing Guide first before contributing.
+Welcome to [report Issues](https://github.com/meitu/MTGLDebug/issues) or [pull requests](https://github.com/meitu/MTGLDebug/pulls). It's recommended to read the following Contributing Guide first before contributing.
 
 ## Issues
 

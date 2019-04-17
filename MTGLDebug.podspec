@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
   s.summary      = "An OpenGL Debugging tool for iOS"
   s.description  = "An OpenGL Debugging tool for iOS, provides the ability to track OpenGL resource memory usage and common incorrect usage of OpenGL API."
-  s.homepage     = "https://github.com/MTlab/MTGLDebug.git"
+  s.homepage     = "https://github.com/meitu/MTGLDebug.git"
   s.license      = { 
   	:type => 'Copyright', 
   	:text => <<-LICENSE 
@@ -13,32 +13,35 @@ Pod::Spec.new do |s|
   	LICENSE
   }
 
-  s.authors      = { 'zxj' => 'zxj@meitu.com' , 'wzq' => 'wzq@meitu.com' }
+  s.authors      = { 'Xiaojun Zhang' => '124825961@qq.com' , 'wzq' => 'wzq@meitu.com' }
   s.platform     = :ios, '8.0'
-  s.source       = { :git => "git@github.com:MTlab/MTGLDebug.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/meitu/MTGLDebug.git", :tag => "#{s.version}" }
   
 
   s.subspec 'ARC' do |spec|
-    spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox'
     spec.source_files =  'MTGLDebug/iOS/*.{h,hpp,c,mm,m}'
     spec.public_header_files = 'MTGLDebug/iOS/*.{h,hpp}'
-    spec.libraries = 'c++'
-    spec.requires_arc = true
+
     spec.dependency 'MTGLDebug/MRC'
+
+    spec.ios.frameworks = 'Foundation', 'UIKit'
+    spec.requires_arc = true
   end 
 
   s.subspec 'MRC' do |spec|
-    spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox'
-    spec.libraries = 'c++'
-    spec.requires_arc = false
     spec.source_files = 'MTGLDebug/Core/*.{hpp,cpp,h,mm,c,m}'
     spec.public_header_files = 'MTGLDebug/Core/*.{h,hpp}'
+
+    spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox'
+    spec.requires_arc = false
+
+    spec.libraries = 'c++'
+    spec.xcconfig = {
+      'CLANG_CXX_LANGUAGE_STANDARD' => 'c++11',
+      'CLANG_CXX_LIBRARY' => 'libc++'
+    }
   end
-
-  s.frameworks = 'CoreFoundation', 'CoreVideo', 'OpenGLES', 'UIKit', 'Foundation'             
   
-  s.library = 'c++'
-
   s.dependency 'fishhook', '~> 0.2'
 
 end

@@ -6,9 +6,9 @@ By inject tracking logic into the OpenGL API through [fishhook](https://github.c
 
 ## Usage
 
-It's recommended to use MTGLDebug with [MTHawkeye](https://github.com/MTlab/MTHawkeye), `MTHawkeye` provides an user interface for `MTGLDebug` which make it easier to use during development.
+It's recommended to use MTGLDebug with [MTHawkeye](https://github.com/meitu/MTHawkeye), `MTHawkeye` provides an user interface for `MTGLDebug` which make it easier to use during development.
 
-View [MTHawkeye Readme](https://github.com/MTlab/MTHawkeye#mthawkeye) to see how to add it to your project for detail, and check [Hawkeye - OpenGL Trace](https://github.com/MTlab/MTHawkeye/blob/master/doc/graphics/opengl-trace.md#hawkeye---opengl-trace) for instructions.
+View [MTHawkeye Readme](https://github.com/meitu/MTHawkeye#mthawkeye) to see how to add it to your project for detail, and check [Hawkeye - OpenGL Trace](https://github.com/meitu/MTHawkeye/blob/master/doc/graphics/opengl-trace.md#hawkeye---opengl-trace) for instructions.
 
 ## Contribute to MTGLDebug
 
