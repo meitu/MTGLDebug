@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
   s.summary      = "An OpenGL Debugging tool for iOS"
   s.description  = "An OpenGL Debugging tool for iOS, provides the ability to track OpenGL resource memory usage and common incorrect usage of OpenGL API."
-  s.homepage     = "https://github.com/MTlab/MTGLDebug.git"
+  s.homepage     = "https://github.com/meitu/MTGLDebug.git"
   s.license      = { 
   	:type => 'Copyright', 
   	:text => <<-LICENSE 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.authors      = { 'zxj' => 'zxj@meitu.com' , 'wzq' => 'wzq@meitu.com' }
   s.platform     = :ios, '8.0'
-  s.source       = { :git => "git@github.com:MTlab/MTGLDebug.git", :tag => "#{s.version}" }
+  s.source       = { :git => "git@github.com:meitu/MTGLDebug.git", :tag => "#{s.version}" }
   
 
   s.subspec 'ARC' do |spec|
