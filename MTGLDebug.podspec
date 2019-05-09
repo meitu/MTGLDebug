@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
     spec.source_files = 'MTGLDebug/Core/*.{hpp,cpp,h,mm,c,m}'
     spec.public_header_files = 'MTGLDebug/Core/*.{h,hpp}'
 
-    spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox'
+    spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox', "CoreGraphics"
     spec.requires_arc = false
 
     spec.libraries = 'c++'
