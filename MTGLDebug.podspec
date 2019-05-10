@@ -20,7 +20,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'ARC' do |spec|
     spec.source_files =  'MTGLDebug/iOS/*.{h,hpp,c,mm,m}'
-    spec.public_header_files = 'MTGLDebug/iOS/*.{h,hpp}'
+    spec.public_header_files = 
+      'MTGLDebug/iOS/MTGLDebug.h',
+      'MTGLDebug/iOS/MTGLDebugImpl.h',
+      'MTGLDebug/iOS/MTGLDebugObject.h',
+      'MTGLDebug/iOS/MTGLDebugObject+QuickLook.h'
 
     spec.dependency 'MTGLDebug/MRC'
 
@@ -29,8 +33,11 @@ Pod::Spec.new do |s|
   end 
 
   s.subspec 'MRC' do |spec|
+    spec.public_header_files = 
+      'MTGLDebug/Core/MTGLDebug_GL.h',
+      'MTGLDebug/Core/MTGLDebug_Platform.h'
+
     spec.source_files = 'MTGLDebug/Core/*.{hpp,cpp,h,mm,c,m}'
-    spec.public_header_files = 'MTGLDebug/Core/*.{h,hpp}'
 
     spec.ios.frameworks = 'OpenGLES', 'CoreVideo', 'AVFoundation', 'CoreMedia', 'AudioToolbox', "CoreGraphics"
     spec.requires_arc = false
