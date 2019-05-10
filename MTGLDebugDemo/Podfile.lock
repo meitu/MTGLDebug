@@ -1,13 +1,13 @@
 PODS:
   - fishhook (0.2)
-  - MTGLDebug (3.0.0):
+  - MTGLDebug (3.1.0):
     - fishhook (~> 0.2)
-    - MTGLDebug/ARC (= 3.0.0)
-    - MTGLDebug/MRC (= 3.0.0)
-  - MTGLDebug/ARC (3.0.0):
+    - MTGLDebug/ARC (= 3.1.0)
+    - MTGLDebug/MRC (= 3.1.0)
+  - MTGLDebug/ARC (3.1.0):
     - fishhook (~> 0.2)
     - MTGLDebug/MRC
-  - MTGLDebug/MRC (3.0.0):
+  - MTGLDebug/MRC (3.1.0):
     - fishhook (~> 0.2)
 
 DEPENDENCIES:
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   fishhook: ea19933abfe8f2f52c55fd8b6e2718467d3ebc89
-  MTGLDebug: b24a9fa00ef28ea1b5248e1f6072afe2d445fb41
+  MTGLDebug: 00dd831397c86bfd06cd977eae8e46b82cf5e502
 
 PODFILE CHECKSUM: 238448fb6866e510ef90e5d461c3749787d8ebc0
 
