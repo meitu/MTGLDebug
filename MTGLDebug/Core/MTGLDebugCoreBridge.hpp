@@ -125,7 +125,7 @@ bool MTGLDebugCore_IsEnableCheckAPIUsageStates(void);
      @param methodName GL函数
      @param error 错误类型
      */
-void MTGLDebugCore_Excption(const char *methodName, GLenum error);
+void MTGLDebugCore_Exception(const char *methodName, GLenum error);
 
 APICallback MTGLDebugCore_WillCallAPICallback(void);
 APICallback MTGLDebugCore_DidCallAPICallback(void);

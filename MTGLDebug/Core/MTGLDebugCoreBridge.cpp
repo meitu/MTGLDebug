@@ -63,8 +63,6 @@ bool MTGLDebugCore_IsEnableGLDebugException() {
     return MTGLDebugCore::isEnableGLDebugException();
 }
 
-
-
 bool MTGLDebugCore_IsEnableGLDebug() {
     return MTGLDebugCore::isEnable();
 }
@@ -180,7 +178,7 @@ bool MTGLDebugCore_IsEnableCheckAPIUsageStates() {
     return MTGLDebugCore::isEnableCheckAPIUsageStates();
 }
 
-void MTGLDebugCore_Excption(const char *methodName, GLenum error) {
+void MTGLDebugCore_Exception(const char *methodName, GLenum error) {
     MTGLDebugCore::exceptionPublic(methodName, error);
 }
 

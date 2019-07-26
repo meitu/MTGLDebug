@@ -38,8 +38,8 @@
  其他基础类型 1 << 0  MTGLDebugCoreObjectBaseClass
  */
 
-void exception(const char *methodName, GLuint error) {
-    MTGLDebugCore_Excption(methodName, error);
+void output_exception(const char *methodName, GLuint error) {
+    MTGLDebugCore_Exception(methodName, error);
 }
 
 #define mtgldebug_func(M_NAME, RETURN_TYPE, ...) \
@@ -49,41 +49,40 @@ void exception(const char *methodName, GLuint error) {
 #define mtgldebug_execute(M_NAME, ...)                                      \
     if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {                      \
         if (!currentContextIsExist()) {                                     \
-            exception("currentContextIsNotExist", currentContextIsExist()); \
+            output_exception("currentContextIsNotExist", currentContextIsExist()); \
         }                                                                   \
         GLuint err = glGetError();                                          \
         if (err) {                                                          \
-            exception("glGetError", err);                                   \
+            output_exception("glGetError", err);                            \
         }                                                                   \
         _Pragma("clang diagnostic push")                                    \
         _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")         \
         func(__VA_ARGS__);                                                  \
         err = glGetError();                                                 \
         if (err) {                                                          \
-            exception(#M_NAME, err);                                        \
+            output_exception(#M_NAME, err);                                 \
         }                                                                   \
         _Pragma("clang diagnostic pop")                                     \
     } else {                                                                \
         func(__VA_ARGS__);                                                  \
     }                                                                       \
 
-//glGetError()是EGL自带的错误检测函数
+// glGetError()是EGL自带的错误检测函数
 #define mtgldebug_execute_return(M_NAME, RESULT, ...)                       \
     if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {                      \
         if (!currentContextIsExist()) {                                     \
-            exception("currentContextIsNotExist", currentContextIsExist()); \
+            output_exception("currentContextIsNotExist", currentContextIsExist()); \
         }                                                                   \
         GLuint err = glGetError();                                          \
         if (err) {                                                          \
-            exception("glGetError", err);                                   \
+            output_exception("glGetError", err);                            \
         }                                                                   \
         _Pragma("clang diagnostic push")                                    \
-            _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")     \
-                RESULT                                                      \
-            = func(__VA_ARGS__);                                            \
+        _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")         \
+        RESULT = func(__VA_ARGS__);                                         \
         err = glGetError();                                                 \
         if (err) {                                                          \
-            exception(#M_NAME, err);                                        \
+            output_exception(#M_NAME, err);                                 \
         }                                                                   \
     } else {                                                                \
         RESULT = func(__VA_ARGS__);                                         \
@@ -208,7 +207,7 @@ void mtgldebug_glTexSubImage2D(GLenum target,
     GLint byesPerPixel = mtgldebug_pixelformatGetBytesPerPixel(format);
 
     if (MTGLDebugCore_IsEnableGLDebugException() && (byesPerPixel % value)) {
-        exception("glTexSubImage2D:所读取的纹理数据的行对齐方式不一致!", -1);
+        output_exception("glTexSubImage2D:所读取的纹理数据的行对齐方式不一致!", -1);
     }
 
     mtgldebug_func(glTexSubImage2D,
@@ -392,7 +391,7 @@ void mtgldebug_glLinkProgram(GLuint program) {
             free(source);
         }
     } else {
-        exception("program link failed!!!", -1);
+        output_exception("program link failed!!!", -1);
     }
 }
 
@@ -613,7 +612,7 @@ EGLContext mtgldebug_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLConte
     mtgldebug_func(eglCreateContext, EGLContext, EGLDisplay, EGLConfig, EGLContext, const EGLint *) if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {
         GLuint err = glGetError();
         if (err) {
-            exception("unknown", err);
+            output_exception("unknown", err);
         }
 
         // clang-format off
@@ -622,7 +621,7 @@ EGLContext mtgldebug_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLConte
         result = func(dpy, config, share_context, attrib_list);
         err = glGetError();
         if (err) {
-            exception("eglCreateContext", err);
+            output_exception("eglCreateContext", err);
         }
         _Pragma("clang diagnostic pop")
         // clang-format on
