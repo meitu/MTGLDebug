@@ -153,7 +153,6 @@ void Queue::runLoop() {
         mWaitLock->Verification();
     }
 
-
     this->runOperationInResourceLock([=] {
         Operation *operation = NULL;
         while (mOperations->size()) {

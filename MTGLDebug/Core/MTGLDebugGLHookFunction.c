@@ -16,10 +16,11 @@
 #include "MTGLDebug_Macro.h"
 #include "MTGLDebug_Platform.h"
 
+// clang-format off
+
 #ifdef MTGLDEBUG_PLATFORM_APPLE
 #include <objc/runtime.h>
 #endif
-
 
 #ifdef MTGLDEBUG_PLATFORM_ANDROID
 #include <malloc.h>
@@ -43,7 +44,7 @@ void exception(const char *methodName, GLuint error) {
 
 #define mtgldebug_func(M_NAME, RETURN_TYPE, ...) \
     RETURN_TYPE (*func)                          \
-    (__VA_ARGS__) = mtgldebug_Get##M_NAME();
+    (__VA_ARGS__) = mtgldebug_Get##M_NAME()
 
 #define mtgldebug_execute(M_NAME, ...)                                      \
     if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {                      \
@@ -55,17 +56,16 @@ void exception(const char *methodName, GLuint error) {
             exception("glGetError", err);                                   \
         }                                                                   \
         _Pragma("clang diagnostic push")                                    \
-            _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")     \
-                func(__VA_ARGS__);                                          \
+        _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")         \
+        func(__VA_ARGS__);                                                  \
         err = glGetError();                                                 \
         if (err) {                                                          \
             exception(#M_NAME, err);                                        \
         }                                                                   \
+        _Pragma("clang diagnostic pop")                                     \
     } else {                                                                \
         func(__VA_ARGS__);                                                  \
     }                                                                       \
-    _Pragma("clang diagnostic pop")
-
 
 //glGetError()是EGL自带的错误检测函数
 #define mtgldebug_execute_return(M_NAME, RESULT, ...)                       \
@@ -90,21 +90,21 @@ void exception(const char *methodName, GLuint error) {
     }                                                                       \
     _Pragma("clang diagnostic pop")
 
-
+// clang-format on
 
 /** Texture **/
 void mtgldebug_glGenTextures(GLsizei n, GLuint *textures) {
-    mtgldebug_func(glGenTextures, void, GLsizei, GLuint *)
-        mtgldebug_execute(glGenTextures, n, textures)
+    mtgldebug_func(glGenTextures, void, GLsizei, GLuint *);
+    mtgldebug_execute(glGenTextures, n, textures);
 
-            for (GLsizei i = 0; i < n; i++) {
+    for (GLsizei i = 0; i < n; i++) {
         MTGLDebugCore_AddObject(textures[i], MT_GLDEBUG_TEXTURE, sizeof(GLuint), MTGLDebugCoreObjectTexture, NULL);
     }
 }
 void mtgldebug_glBindTexture(GLenum target, GLuint texture) {
-    mtgldebug_func(glBindTexture, void, GLenum, GLuint)
-        mtgldebug_execute(glBindTexture, target, texture)
-            MTGLDebugCore_CheckObject(texture, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
+    mtgldebug_func(glBindTexture, void, GLenum, GLuint);
+    mtgldebug_execute(glBindTexture, target, texture);
+    MTGLDebugCore_CheckObject(texture, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
 }
 
 void mtgldebug_glTexImage2D(GLenum target,
@@ -128,10 +128,10 @@ void mtgldebug_glTexImage2D(GLenum target,
         GLint,
         GLenum,
         GLenum,
-        const GLvoid *)
-        mtgldebug_execute(glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels)
+        const GLvoid *);
+    mtgldebug_execute(glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels);
 
-            MTGLDebugCore_CheckObject(object, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
+    MTGLDebugCore_CheckObject(object, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
 
     MTGLDebugCore_TextureOutputObjectSetSize(MT_GLDEBUG_TEXTURE, object, width, height);
 
@@ -211,7 +211,6 @@ void mtgldebug_glTexSubImage2D(GLenum target,
         exception("glTexSubImage2D:所读取的纹理数据的行对齐方式不一致!", -1);
     }
 
-
     mtgldebug_func(glTexSubImage2D,
         void,
         GLenum,
@@ -222,24 +221,23 @@ void mtgldebug_glTexSubImage2D(GLenum target,
         GLsizei,
         GLenum,
         GLenum,
-        const GLvoid *)
-        mtgldebug_execute(glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels)
+        const GLvoid *);
+    mtgldebug_execute(glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels);
 
     if (MTGLDebugCore_IsEnableGLDebugException()) {
         MTGLDebugCore_CheckObject(object, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
         MTGLDebugCore_TextureOutputObjectSetSize(MT_GLDEBUG_TEXTURE, object, width, height);
-        
+
         size_t memorySize = MTGLDebugCore_CalculateMemorySize(width, height, format, type);
         MTGLDebugCore_OutputObjectSetMemorySize(MT_GLDEBUG_TEXTURE, object, memorySize + sizeof(GLuint));
-    }
-    else {
+    } else {
         if (mtgldebug_pixelformatGetBytesPerPixel(format) != value) {
             MTGLDebugCore_DeleteObject(object, MT_GLDEBUG_TEXTURE, MTGLDebugCoreObjectTexture);
         } else {
-            
+
             MTGLDebugCore_CheckObject(object, MT_GLDEBUG_TEXTURE, NULL, MTGLDebugCoreObjectTexture, NULL);
             MTGLDebugCore_TextureOutputObjectSetSize(MT_GLDEBUG_TEXTURE, object, width, height);
-            
+
             size_t memorySize = MTGLDebugCore_CalculateMemorySize(width, height, format, type);
             MTGLDebugCore_OutputObjectSetMemorySize(MT_GLDEBUG_TEXTURE, object, memorySize + sizeof(GLuint));
         }
@@ -247,47 +245,47 @@ void mtgldebug_glTexSubImage2D(GLenum target,
 }
 
 void mtgldebug_glDeleteTextures(GLsizei n, const GLuint *textures) {
-    mtgldebug_func(glDeleteTextures, void, GLsizei, const GLuint *)
-        mtgldebug_execute(glDeleteTextures, n, textures)
-            MTGLDebugCore_DeleteObjects(n, textures, MT_GLDEBUG_TEXTURE, MTGLDebugCoreObjectTexture);
+    mtgldebug_func(glDeleteTextures, void, GLsizei, const GLuint *);
+    mtgldebug_execute(glDeleteTextures, n, textures);
+    MTGLDebugCore_DeleteObjects(n, textures, MT_GLDEBUG_TEXTURE, MTGLDebugCoreObjectTexture);
 }
 
 
 /** Framebuffer **/
 void mtgldebug_glGenFramebuffers(GLsizei n, GLuint *framebuffers) {
-    mtgldebug_func(glGenFramebuffers, void, GLsizei, GLuint *)
-        mtgldebug_execute(glGenFramebuffers, n, framebuffers)
+    mtgldebug_func(glGenFramebuffers, void, GLsizei, GLuint *);
+    mtgldebug_execute(glGenFramebuffers, n, framebuffers);
 
-            for (GLsizei i = 0; i < n; i++) {
+    for (GLsizei i = 0; i < n; i++) {
         MTGLDebugCore_AddObject(framebuffers[i], MT_GLDEBUG_FRAMEBUFFER, sizeof(GLuint), MTGLDebugCoreObjectFramebuffer, NULL);
     }
 }
 
 void mtgldebug_glBindFramebuffer(GLenum target, GLuint framebuffer) {
-    mtgldebug_func(glBindFramebuffer, void, GLenum, GLuint)
-        mtgldebug_execute(glBindFramebuffer, target, framebuffer)
-            MTGLDebugCore_CheckObject(framebuffer, MT_GLDEBUG_FRAMEBUFFER, NULL, MTGLDebugCoreObjectFramebuffer, NULL);
+    mtgldebug_func(glBindFramebuffer, void, GLenum, GLuint);
+    mtgldebug_execute(glBindFramebuffer, target, framebuffer);
+    MTGLDebugCore_CheckObject(framebuffer, MT_GLDEBUG_FRAMEBUFFER, NULL, MTGLDebugCoreObjectFramebuffer, NULL);
 }
 
 void mtgldebug_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) {
     GLint object = 0;
     glGetIntegerv(GL_FRAMEBUFFER_BINDING, &object);
-    mtgldebug_func(glFramebufferTexture2D, void, GLenum, GLenum, GLenum, GLuint, GLint)
-        mtgldebug_execute(glFramebufferTexture2D, target, attachment, textarget, texture, level)
+    mtgldebug_func(glFramebufferTexture2D, void, GLenum, GLenum, GLenum, GLuint, GLint);
+    mtgldebug_execute(glFramebufferTexture2D, target, attachment, textarget, texture, level);
 
-            MTGLDebugCore_FramebufferObjectSetTexture(MT_GLDEBUG_FRAMEBUFFER, object, texture);
+    MTGLDebugCore_FramebufferObjectSetTexture(MT_GLDEBUG_FRAMEBUFFER, object, texture);
 }
 
 void mtgldebug_glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers) {
-    mtgldebug_func(glDeleteFramebuffers, void, GLsizei, const GLuint *)
-        mtgldebug_execute(glDeleteFramebuffers, n, framebuffers);
+    mtgldebug_func(glDeleteFramebuffers, void, GLsizei, const GLuint *);
+    mtgldebug_execute(glDeleteFramebuffers, n, framebuffers);
     MTGLDebugCore_DeleteObjects(n, framebuffers, MT_GLDEBUG_FRAMEBUFFER, MTGLDebugCoreObjectFramebuffer);
 }
 
 void mtgldebug_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer) {
 
-    mtgldebug_func(glFramebufferRenderbuffer, void, GLenum, GLenum, GLenum, GLuint)
-        mtgldebug_execute(glFramebufferRenderbuffer, target, attachment, renderbuffertarget, renderbuffer);
+    mtgldebug_func(glFramebufferRenderbuffer, void, GLenum, GLenum, GLenum, GLuint);
+    mtgldebug_execute(glFramebufferRenderbuffer, target, attachment, renderbuffertarget, renderbuffer);
     GLint width = 0, height = 0;
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &width);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
@@ -296,12 +294,11 @@ void mtgldebug_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenu
     MTGLDebugCore_TextureOutputObjectSetSize(GL_RENDERBUFFER, renderbuffer, width, height);
 }
 
-
 /** Buffers **/
 
 void mtgldebug_glGenBuffers(GLsizei n, GLuint *buffers) {
-    mtgldebug_func(glGenBuffers, void, GLsizei, GLuint *)
-        mtgldebug_execute(glGenBuffers, n, buffers);
+    mtgldebug_func(glGenBuffers, void, GLsizei, GLuint *);
+    mtgldebug_execute(glGenBuffers, n, buffers);
 
     for (GLsizei i = 0; i < n; i++) {
         MTGLDebugCore_AddObject(buffers[i], MT_GLDEBUG_BUFFER, sizeof(GLuint), MTGLDebugCoreObjectBase, NULL);
@@ -309,40 +306,40 @@ void mtgldebug_glGenBuffers(GLsizei n, GLuint *buffers) {
 }
 
 void mtgldebug_glBindBuffer(GLenum target, GLuint buffer) {
-    mtgldebug_func(glBindBuffer, void, GLenum, GLuint)
-        mtgldebug_execute(glBindBuffer, target, buffer);
+    mtgldebug_func(glBindBuffer, void, GLenum, GLuint);
+    mtgldebug_execute(glBindBuffer, target, buffer);
     MTGLDebugCore_CheckObject(buffer, MT_GLDEBUG_BUFFER, NULL, MTGLDebugCoreObjectBase, NULL);
 }
 
 void mtgldebug_glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage) {
     GLint object = 0;
     glGetIntegerv(target == GL_ARRAY_BUFFER ? GL_ARRAY_BUFFER_BINDING : GL_ELEMENT_ARRAY_BUFFER_BINDING, &object);
-    mtgldebug_func(glBufferData, void, GLenum, GLsizeiptr, const GLvoid *, GLenum)
-        mtgldebug_execute(glBufferData, target, size, data, usage)
+    mtgldebug_func(glBufferData, void, GLenum, GLsizeiptr, const GLvoid *, GLenum);
+    mtgldebug_execute(glBufferData, target, size, data, usage);
 
-            MTGLDebugCore_CheckObject(object, MT_GLDEBUG_BUFFER, NULL, MTGLDebugCoreObjectBase, NULL);
+    MTGLDebugCore_CheckObject(object, MT_GLDEBUG_BUFFER, NULL, MTGLDebugCoreObjectBase, NULL);
     MTGLDebugCore_OutputObjectAppendMemorySize(MT_GLDEBUG_BUFFER, object, size);
 }
 
 void mtgldebug_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data) {
     GLint object = 0;
     glGetIntegerv(target == GL_ARRAY_BUFFER ? GL_ARRAY_BUFFER_BINDING : GL_ELEMENT_ARRAY_BUFFER_BINDING, &object);
-    mtgldebug_func(glBufferSubData, void, GLenum, GLintptr, GLsizeiptr, const GLvoid *)
-        mtgldebug_execute(glBufferSubData, target, offset, size, data)
-            MTGLDebugCore_CheckObject(object, MT_GLDEBUG_BUFFER, NULL, MTGLDebugCoreObjectBase, NULL);
+    mtgldebug_func(glBufferSubData, void, GLenum, GLintptr, GLsizeiptr, const GLvoid *);
+    mtgldebug_execute(glBufferSubData, target, offset, size, data);
+    MTGLDebugCore_CheckObject(object, MT_GLDEBUG_BUFFER, NULL, MTGLDebugCoreObjectBase, NULL);
 }
 
 void mtgldebug_glDeleteBuffers(GLsizei n, const GLuint *buffers) {
-    mtgldebug_func(glDeleteBuffers, void, GLsizei, const GLuint *)
-        mtgldebug_execute(glDeleteBuffers, n, buffers);
+    mtgldebug_func(glDeleteBuffers, void, GLsizei, const GLuint *);
+    mtgldebug_execute(glDeleteBuffers, n, buffers);
     MTGLDebugCore_DeleteObjects(n, buffers, MT_GLDEBUG_BUFFER, MTGLDebugCoreObjectBase);
 }
 
 
 /** Renderbuffer **/
 void mtgldebug_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers) {
-    mtgldebug_func(glGenRenderbuffers, void, GLsizei, GLuint *)
-        mtgldebug_execute(glGenRenderbuffers, n, renderbuffers);
+    mtgldebug_func(glGenRenderbuffers, void, GLsizei, GLuint *);
+    mtgldebug_execute(glGenRenderbuffers, n, renderbuffers);
 
     for (GLsizei i = 0; i < n; i++) {
         MTGLDebugCore_AddObject(renderbuffers[i], GL_RENDERBUFFER, sizeof(GLuint), MTGLDebugCoreObjectTexture, NULL);
@@ -350,15 +347,15 @@ void mtgldebug_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers) {
 }
 
 void mtgldebug_glBindRenderbuffer(GLenum target, GLuint renderbuffer) {
-    mtgldebug_func(glBindRenderbuffer, void, GLenum, GLuint)
-        mtgldebug_execute(glBindRenderbuffer, target, renderbuffer);
+    mtgldebug_func(glBindRenderbuffer, void, GLenum, GLuint);
+    mtgldebug_execute(glBindRenderbuffer, target, renderbuffer);
     MTGLDebugCore_CheckObject(renderbuffer, target, NULL, MTGLDebugCoreObjectTexture, NULL);
 }
 
 void mtgldebug_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers) {
-    mtgldebug_func(glDeleteRenderbuffers, void, GLsizei, const GLuint *)
-        mtgldebug_execute(glDeleteRenderbuffers, n, renderbuffers)
-            MTGLDebugCore_DeleteObjects(n, renderbuffers, GL_RENDERBUFFER, MTGLDebugCoreObjectTexture);
+    mtgldebug_func(glDeleteRenderbuffers, void, GLsizei, const GLuint *);
+    mtgldebug_execute(glDeleteRenderbuffers, n, renderbuffers);
+    MTGLDebugCore_DeleteObjects(n, renderbuffers, GL_RENDERBUFFER, MTGLDebugCoreObjectTexture);
 }
 
 
@@ -366,18 +363,18 @@ void mtgldebug_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers) {
 
 GLuint mtgldebug_glCreateProgram(void) {
     GLuint program;
-    mtgldebug_func(glCreateProgram, GLuint, void)
-        mtgldebug_execute_return(glCreateProgram, program)
-            MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), MTGLDebugCoreObjectProgram, NULL);
+    mtgldebug_func(glCreateProgram, GLuint, void);
+    mtgldebug_execute_return(glCreateProgram, program);
+    MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), MTGLDebugCoreObjectProgram, NULL);
     return program;
 }
 
 void mtgldebug_glLinkProgram(GLuint program) {
-    mtgldebug_func(glLinkProgram, void, GLuint)
-        mtgldebug_execute(glLinkProgram, program)
+    mtgldebug_func(glLinkProgram, void, GLuint);
+    mtgldebug_execute(glLinkProgram, program);
 
-        //判断脚本是否验证成功
-        GLint status;
+    // 判断脚本是否验证成功
+    GLint status;
     glGetProgramiv(program, GL_LINK_STATUS, &status);
     if (status == GL_TRUE) {
         GLsizei maxcount = 2;
@@ -400,87 +397,84 @@ void mtgldebug_glLinkProgram(GLuint program) {
 }
 
 void mtgldebug_glUseProgram(GLuint program) {
-    mtgldebug_func(glUseProgram, void, GLuint)
-        mtgldebug_execute(glUseProgram, program);
+    mtgldebug_func(glUseProgram, void, GLuint);
+    mtgldebug_execute(glUseProgram, program);
     MTGLDebugCore_CheckObject(program, MT_GLDEBUG_PROGRAM, NULL, MTGLDebugCoreObjectProgram, NULL);
 }
 
 void mtgldebug_glDeleteProgram(GLuint program) {
-    mtgldebug_func(glUseProgram, void, GLuint)
-        mtgldebug_execute(glDeleteProgram, program);
+    mtgldebug_func(glUseProgram, void, GLuint);
+    mtgldebug_execute(glDeleteProgram, program);
 
     MTGLDebugCore_DeleteObject(program, MT_GLDEBUG_PROGRAM, MTGLDebugCoreObjectProgram);
 }
 
 void mtgldebug_glEnableVertexAttribArray(GLuint index) {
-    mtgldebug_func(glEnableVertexAttribArray, void, GLuint)
-        mtgldebug_execute(glEnableVertexAttribArray, index);
+    mtgldebug_func(glEnableVertexAttribArray, void, GLuint);
+    mtgldebug_execute(glEnableVertexAttribArray, index);
 }
 
 void mtgldebug_glVertexAttribPointer(GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *ptr) {
-    mtgldebug_func(glVertexAttribPointer, void, GLuint, GLint, GLenum, GLboolean, GLsizei, const GLvoid *)
-
-        mtgldebug_execute(glVertexAttribPointer, indx, size, type, normalized, stride, ptr);
+    mtgldebug_func(glVertexAttribPointer, void, GLuint, GLint, GLenum, GLboolean, GLsizei, const GLvoid *);
+    mtgldebug_execute(glVertexAttribPointer, indx, size, type, normalized, stride, ptr);
 }
 
 int mtgldebug_glGetUniformLocation(GLuint program, const GLchar *name) {
     int uniformHandler;
-    mtgldebug_func(glGetUniformLocation, int, GLuint, const GLchar *)
+    mtgldebug_func(glGetUniformLocation, int, GLuint, const GLchar *);
+    mtgldebug_execute_return(glGetUniformLocation, uniformHandler, program, name);
 
-        mtgldebug_execute_return(glGetUniformLocation, uniformHandler, program, name)
-
-        //	MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), 0x0, NULL);
-        return uniformHandler;
+    //	MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), 0x0, NULL);
+    return uniformHandler;
 }
 
 int mtgldebug_glGetAttribLocation(GLuint program, const GLchar *name) {
     int uniformHandler;
-    mtgldebug_func(glGetAttribLocation, int, GLuint, const GLchar *)
+    mtgldebug_func(glGetAttribLocation, int, GLuint, const GLchar *);
 
-        mtgldebug_execute_return(glGetAttribLocation, uniformHandler, program, name)
+    mtgldebug_execute_return(glGetAttribLocation, uniformHandler, program, name);
 
-        //	MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), 0x0, NULL);
-        return uniformHandler;
+    //	MTGLDebugCore_AddObject(program, MT_GLDEBUG_PROGRAM, sizeof(GLuint), 0x0, NULL);
+    return uniformHandler;
 }
 
 
 
 void mtgldebug_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices) {
-    mtgldebug_func(glDrawElements, void, GLenum, GLsizei, GLenum, const GLvoid *)
-        mtgldebug_execute(glDrawElements, mode, count, type, indices);
+    mtgldebug_func(glDrawElements, void, GLenum, GLsizei, GLenum, const GLvoid *);
+    mtgldebug_execute(glDrawElements, mode, count, type, indices);
     MTGLDebugCore_DidDraw();
 }
 
 void mtgldebug_glDrawArrays(GLenum mode, GLint first, GLsizei count) {
-    mtgldebug_func(glDrawArrays, void, GLenum, GLint, GLsizei)
-        mtgldebug_execute(glDrawArrays, mode, first, count);
+    mtgldebug_func(glDrawArrays, void, GLenum, GLint, GLsizei);
+    mtgldebug_execute(glDrawArrays, mode, first, count);
     MTGLDebugCore_DidDraw();
 }
 
 void mtgldebug_glClear(GLbitfield mask) {
-    mtgldebug_func(glClear, void, GLbitfield)
-        mtgldebug_execute(glClear, mask);
+    mtgldebug_func(glClear, void, GLbitfield);
+    mtgldebug_execute(glClear, mask);
 }
 
 void mtgldebug_glUniform1i(GLint location, GLint x) {
-    mtgldebug_func(glUniform1i, void, GLint, GLint)
-        mtgldebug_execute(glUniform1i, location, x);
+    mtgldebug_func(glUniform1i, void, GLint, GLint);
+    mtgldebug_execute(glUniform1i, location, x);
 }
 
 void mtgldebug_glUniform2f(GLint location, GLfloat x, GLfloat y) {
-
-    mtgldebug_func(glUniform2f, void, GLint, GLfloat, GLfloat)
-        mtgldebug_execute(glUniform2f, location, x, y);
+    mtgldebug_func(glUniform2f, void, GLint, GLfloat, GLfloat);
+    mtgldebug_execute(glUniform2f, location, x, y);
 }
 
 void mtgldebug_glUniform1f(GLint location, GLfloat x) {
-    mtgldebug_func(glUniform1f, void, GLint, GLfloat)
-        mtgldebug_execute(glUniform1f, location, x);
+    mtgldebug_func(glUniform1f, void, GLint, GLfloat);
+    mtgldebug_execute(glUniform1f, location, x);
 }
 
 void mtgldebug_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
-    mtgldebug_func(glUniformMatrix4fv, void, GLint, GLsizei, GLboolean, const GLfloat *)
-        mtgldebug_execute(glUniformMatrix4fv, location, count, transpose, value);
+    mtgldebug_func(glUniformMatrix4fv, void, GLint, GLsizei, GLboolean, const GLfloat *);
+    mtgldebug_execute(glUniformMatrix4fv, location, count, transpose, value);
 }
 
 #pragma mark - APPLE
@@ -616,29 +610,28 @@ EGLContext mtgldebug_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLConte
      *     (*func) 定义函数指针，参数类型为括号中的
      *
      */
-    mtgldebug_func(eglCreateContext, EGLContext, EGLDisplay, EGLConfig, EGLContext, const EGLint *)
-        //mtgldebug_GeteglCreateContext();
-        //    mtgldebug_execute_return(eglCreateContext, result, dpy, config, share_context, attrib_list)
-        if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {
+    mtgldebug_func(eglCreateContext, EGLContext, EGLDisplay, EGLConfig, EGLContext, const EGLint *) if (MTGLDebugCore_IsEnableCheckAPIUsageStates()) {
         GLuint err = glGetError();
         if (err) {
             exception("unknown", err);
         }
+
+        // clang-format off
         _Pragma("clang diagnostic push")
-            _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")
-                result
-            = func(dpy, config, share_context, attrib_list);
+        _Pragma("clang diagnostic ignored \"-Wstrict-prototypes\"")
+        result = func(dpy, config, share_context, attrib_list);
         err = glGetError();
         if (err) {
             exception("eglCreateContext", err);
         }
+        _Pragma("clang diagnostic pop")
+        // clang-format on
     }
     else {
         result = func(dpy, config, share_context, attrib_list);
     }
-    _Pragma("clang diagnostic pop")
 
-        MTGLDebugCore_BindContext(result, share_context, attrib_list);
+    MTGLDebugCore_BindContext(result, share_context, attrib_list);
     return result;
 }
 
@@ -646,81 +639,74 @@ EGLContext mtgldebug_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLConte
 
 #pragma mark - BIND
 
-#define mtgldebug_glFunction_register(M_NAME) ReplaceFunc(#M_NAME, &M_NAME, (void **)mtgldebug_GetAddress_##M_NAME(), (void **)&mtgldebug_##M_NAME);
+#define mtgldebug_glFunction_register(M_NAME) ReplaceFunc(#M_NAME, &M_NAME, (void **)mtgldebug_GetAddress_##M_NAME(), (void **)&mtgldebug_##M_NAME)
 
 /*
  * 在这里进行了Hook,把系统的函数全部自己代理了
  */
 void mtglDebug_register() {
     // glfunction replace
-    /*************************/
 
-    mtgldebug_glFunction_register(glGenTextures)
-        mtgldebug_glFunction_register(glBindTexture)
-            mtgldebug_glFunction_register(glTexImage2D)
-                mtgldebug_glFunction_register(glDeleteTextures)
-                    mtgldebug_glFunction_register(glTexSubImage2D)
+    mtgldebug_glFunction_register(glGenTextures);
+    mtgldebug_glFunction_register(glBindTexture);
+    mtgldebug_glFunction_register(glTexImage2D);
+    mtgldebug_glFunction_register(glDeleteTextures);
+    mtgldebug_glFunction_register(glTexSubImage2D);
+    /******/
 
-        /******/
-
-        mtgldebug_glFunction_register(glGenFramebuffers)
-            mtgldebug_glFunction_register(glBindFramebuffer)
-                mtgldebug_glFunction_register(glFramebufferTexture2D)
-                    mtgldebug_glFunction_register(glDeleteFramebuffers)
-                        mtgldebug_glFunction_register(glFramebufferRenderbuffer)
-
-        /******/
-
-        mtgldebug_glFunction_register(glGenBuffers)
-            mtgldebug_glFunction_register(glBindBuffer)
-                mtgldebug_glFunction_register(glBufferData)
-                    mtgldebug_glFunction_register(glBufferSubData)
-                        mtgldebug_glFunction_register(glDeleteBuffers)
-
-        /******/
-
-        mtgldebug_glFunction_register(glGenRenderbuffers)
-            mtgldebug_glFunction_register(glBindRenderbuffer)
-                mtgldebug_glFunction_register(glDeleteRenderbuffers)
-
-        /******/
-
-        mtgldebug_glFunction_register(glCreateProgram)
-            mtgldebug_glFunction_register(glLinkProgram)
-                mtgldebug_glFunction_register(glUseProgram)
-                    mtgldebug_glFunction_register(glDeleteProgram)
-
-                        mtgldebug_glFunction_register(glGetAttribLocation)
-                            mtgldebug_glFunction_register(glGetUniformLocation)
-
-
-                                mtgldebug_glFunction_register(glEnableVertexAttribArray)
-                                    mtgldebug_glFunction_register(glVertexAttribPointer)
-                                        mtgldebug_glFunction_register(glUniform1i)
-                                            mtgldebug_glFunction_register(glUniformMatrix4fv)
-
-                                                mtgldebug_glFunction_register(glUniform1f)
-                                                    mtgldebug_glFunction_register(glUniform2f)
-
-
-        /******/
-
-        mtgldebug_glFunction_register(glDrawElements)
-            mtgldebug_glFunction_register(glDrawArrays)
-                mtgldebug_glFunction_register(glClear)
+    mtgldebug_glFunction_register(glGenFramebuffers);
+    mtgldebug_glFunction_register(glBindFramebuffer);
+    mtgldebug_glFunction_register(glFramebufferTexture2D);
+    mtgldebug_glFunction_register(glDeleteFramebuffers);
+    mtgldebug_glFunction_register(glFramebufferRenderbuffer);
 
     /******/
 
+    mtgldebug_glFunction_register(glGenBuffers);
+    mtgldebug_glFunction_register(glBindBuffer);
+    mtgldebug_glFunction_register(glBufferData);
+    mtgldebug_glFunction_register(glBufferSubData);
+    mtgldebug_glFunction_register(glDeleteBuffers);
+
+    /******/
+
+    mtgldebug_glFunction_register(glGenRenderbuffers);
+    mtgldebug_glFunction_register(glBindRenderbuffer);
+    mtgldebug_glFunction_register(glDeleteRenderbuffers);
+
+    /******/
+
+    mtgldebug_glFunction_register(glCreateProgram);
+    mtgldebug_glFunction_register(glLinkProgram);
+    mtgldebug_glFunction_register(glUseProgram);
+    mtgldebug_glFunction_register(glDeleteProgram);
+
+    mtgldebug_glFunction_register(glGetAttribLocation);
+    mtgldebug_glFunction_register(glGetUniformLocation);
+
+
+    mtgldebug_glFunction_register(glEnableVertexAttribArray);
+    mtgldebug_glFunction_register(glVertexAttribPointer);
+    mtgldebug_glFunction_register(glUniform1i);
+    mtgldebug_glFunction_register(glUniformMatrix4fv);
+
+    mtgldebug_glFunction_register(glUniform1f);
+    mtgldebug_glFunction_register(glUniform2f);
+
+    /******/
+    mtgldebug_glFunction_register(glDrawElements);
+    mtgldebug_glFunction_register(glDrawArrays);
+    mtgldebug_glFunction_register(glClear);
+
 #ifdef MTGLDEBUG_PLATFORM_ANDROID
-                    mtgldebug_glFunction_register(eglCreateContext);
+    mtgldebug_glFunction_register(eglCreateContext);
     xhook_refresh(0);
 #endif
 
 #ifdef MTGLDEBUG_PLATFORM_APPLE
-    mtgldebug_glFunction_register(CVOpenGLESTextureCacheCreateTextureFromImage)
-        mtgldebug_glFunction_register(CFRelease)
-            mtgldebug_glFunction_register(CVBufferRelease)
+    mtgldebug_glFunction_register(CVOpenGLESTextureCacheCreateTextureFromImage);
+    mtgldebug_glFunction_register(CFRelease);
+    mtgldebug_glFunction_register(CVBufferRelease);
 #endif
-
     /******/
 }

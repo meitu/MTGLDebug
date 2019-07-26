@@ -72,7 +72,6 @@ bool MTGLDebugCore_iOS::deleteObject(const GLDebug::MTGLDebugCoreInputObject &in
 }
 
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -93,7 +92,6 @@ const void *currentSharegroup() {
 #ifdef __cplusplus
 }
 #endif
-
 
 
 MTGLDebugCoreGLAPIVersion MTGLDebugCore_iOS::currentGLAPIVersion() {

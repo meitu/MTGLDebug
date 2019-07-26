@@ -138,7 +138,7 @@
     glGenTextures(1, &texture);
 
     EAGLContext *contextB = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2
-                                                 sharegroup:contextA.sharegroup];
+                                                  sharegroup:contextA.sharegroup];
     [EAGLContext setCurrentContext:contextB];
 
     XCTAssertTrue([MTGLDebug mtgldebug_checkObject:texture
@@ -186,7 +186,7 @@
     glGenTextures(1, &texture);
     glDeleteTextures(1, &tempTexture);
     unsigned int type1;
-    NSLog(@"%p",&type1);
+    NSLog(@"%p", &type1);
     //下面的操作相当于 glBindTexture(0x99999996, texture)
     XCTAssertFalse([MTGLDebug mtgldebug_checkObject:texture
                                              target:MT_GL_TEXTURE
@@ -347,7 +347,7 @@
 
     EAGLContext *context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     [EAGLContext setCurrentContext:context];
-   
+
     GLuint *textureID = (GLuint *)malloc(sizeof(GLuint));
     glGenTextures(1, textureID);
     glBindTexture(GL_TEXTURE_2D, *textureID);
@@ -355,27 +355,27 @@
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
+
     GLint unPackAlignment;
     glGetIntegerv(GL_UNPACK_ALIGNMENT, &unPackAlignment);
-  
+
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, maskImageSize.width, maskImageSize.height, 0, GL_ALPHA, GL_UNSIGNED_BYTE, _maskTextureData);
-    
+
     CGRect rect = CGRectMake(0, 0, maskImageSize.width, maskImageSize.height);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
-    
+
     glTexSubImage2D(GL_TEXTURE_2D,
-                    0,
-                    rect.origin.x,
-                    rect.origin.y,
-                    rect.size.width,
-                    rect.size.height,
-                    GL_ALPHA,
-                    GL_UNSIGNED_BYTE,
-                    _maskTextureData);
+        0,
+        rect.origin.x,
+        rect.origin.y,
+        rect.size.width,
+        rect.size.height,
+        GL_ALPHA,
+        GL_UNSIGNED_BYTE,
+        _maskTextureData);
     glPixelStorei(GL_UNPACK_ALIGNMENT, unPackAlignment);
-    
+
 
 
     XCTAssertFalse([MTGLDebug mtgldebug_checkObject:*textureID
@@ -386,13 +386,13 @@
     NSLog(@"testCase11:因为当前texture数据格式不对齐,所以删除当前纹理,检测不到这个maskTexture,测试通过");
 
     free(_maskTextureData);
-    
+
     if (textureID && *textureID) {
         glDeleteTextures(1, textureID);
         *textureID = 0;
         free(textureID);
     }
-    
+
     _maskTextureData = NULL;
 }
 
@@ -457,6 +457,5 @@
     XCTAssertFalse(MTGLDebugCore_CheckObject(fbo, MT_GLDEBUG_FRAMEBUFFER, NULL, MTGLDebugCoreObjectFramebuffer, NULL));
     glDeleteFramebuffers(1, &fbo);
 }
-
 
 @end

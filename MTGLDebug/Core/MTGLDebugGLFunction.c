@@ -22,6 +22,7 @@
 #include "xhook.h"
 #endif
 
+// clang-format off
 #define mtgldebug_glFunction_implementer(M_NAME) \
     static void *orig_##M_NAME;                  \
     void *mtgldebug_Get##M_NAME(void) {          \
@@ -33,69 +34,70 @@
 
 // origin function implement
 /*************************/
-
 mtgldebug_glFunction_implementer(glGenTextures)
-    mtgldebug_glFunction_implementer(glBindTexture)
-        mtgldebug_glFunction_implementer(glTexImage2D)
-            mtgldebug_glFunction_implementer(glTexSubImage2D)
-                mtgldebug_glFunction_implementer(glDeleteTextures)
+mtgldebug_glFunction_implementer(glBindTexture)
+mtgldebug_glFunction_implementer(glTexImage2D)
+mtgldebug_glFunction_implementer(glTexSubImage2D)
+mtgldebug_glFunction_implementer(glDeleteTextures)
 
-    /******/
+/******/
 
-    mtgldebug_glFunction_implementer(glGenFramebuffers)
-        mtgldebug_glFunction_implementer(glBindFramebuffer)
-            mtgldebug_glFunction_implementer(glFramebufferTexture2D)
-                mtgldebug_glFunction_implementer(glDeleteFramebuffers)
-                    mtgldebug_glFunction_implementer(glFramebufferRenderbuffer)
+mtgldebug_glFunction_implementer(glGenFramebuffers)
+mtgldebug_glFunction_implementer(glBindFramebuffer)
+mtgldebug_glFunction_implementer(glFramebufferTexture2D)
+mtgldebug_glFunction_implementer(glDeleteFramebuffers)
+mtgldebug_glFunction_implementer(glFramebufferRenderbuffer)
 
-    /******/
+/******/
 
-    mtgldebug_glFunction_implementer(glGenBuffers)
-        mtgldebug_glFunction_implementer(glBindBuffer)
-            mtgldebug_glFunction_implementer(glBufferData)
-                mtgldebug_glFunction_implementer(glBufferSubData)
-                    mtgldebug_glFunction_implementer(glDeleteBuffers)
+mtgldebug_glFunction_implementer(glGenBuffers)
+mtgldebug_glFunction_implementer(glBindBuffer)
+mtgldebug_glFunction_implementer(glBufferData)
+mtgldebug_glFunction_implementer(glBufferSubData)
+mtgldebug_glFunction_implementer(glDeleteBuffers)
 
-    /******/
+/******/
 
-    mtgldebug_glFunction_implementer(glGenRenderbuffers)
-        mtgldebug_glFunction_implementer(glBindRenderbuffer)
-            mtgldebug_glFunction_implementer(glDeleteRenderbuffers)
+mtgldebug_glFunction_implementer(glGenRenderbuffers)
+mtgldebug_glFunction_implementer(glBindRenderbuffer)
+mtgldebug_glFunction_implementer(glDeleteRenderbuffers)
 
-    /******/
+/******/
 
-    mtgldebug_glFunction_implementer(glLinkProgram)
-        mtgldebug_glFunction_implementer(glUseProgram)
-            mtgldebug_glFunction_implementer(glDeleteProgram)
-                mtgldebug_glFunction_implementer(glCreateProgram)
-                    mtgldebug_glFunction_implementer(glEnableVertexAttribArray)
-                        mtgldebug_glFunction_implementer(glVertexAttribPointer)
-                            mtgldebug_glFunction_implementer(glGetAttribLocation)
-                                mtgldebug_glFunction_implementer(glGetUniformLocation)
-                                    mtgldebug_glFunction_implementer(glUniform1i)
+mtgldebug_glFunction_implementer(glLinkProgram)
+mtgldebug_glFunction_implementer(glUseProgram)
+mtgldebug_glFunction_implementer(glDeleteProgram)
+mtgldebug_glFunction_implementer(glCreateProgram)
+mtgldebug_glFunction_implementer(glEnableVertexAttribArray)
+mtgldebug_glFunction_implementer(glVertexAttribPointer)
+mtgldebug_glFunction_implementer(glGetAttribLocation)
+mtgldebug_glFunction_implementer(glGetUniformLocation)
+mtgldebug_glFunction_implementer(glUniform1i)
 
-                                        mtgldebug_glFunction_implementer(glUniform2f)
-                                            mtgldebug_glFunction_implementer(glUniform1f)
+mtgldebug_glFunction_implementer(glUniform2f)
+mtgldebug_glFunction_implementer(glUniform1f)
 
-                                                mtgldebug_glFunction_implementer(glUniformMatrix4fv)
+mtgldebug_glFunction_implementer(glUniformMatrix4fv)
 
-    /******/
+/******/
 
-    mtgldebug_glFunction_implementer(glDrawArrays)
-        mtgldebug_glFunction_implementer(glDrawElements)
-            mtgldebug_glFunction_implementer(glClear)
+mtgldebug_glFunction_implementer(glDrawArrays)
+mtgldebug_glFunction_implementer(glDrawElements)
+mtgldebug_glFunction_implementer(glClear)
 
 /******/
 
 #ifdef MTGLDEBUG_PLATFORM_APPLE
-                mtgldebug_glFunction_implementer(CVOpenGLESTextureCacheCreateTextureFromImage)
-                    mtgldebug_glFunction_implementer(CVBufferRelease)
-                        mtgldebug_glFunction_implementer(CFRelease)
+mtgldebug_glFunction_implementer(CVOpenGLESTextureCacheCreateTextureFromImage)
+mtgldebug_glFunction_implementer(CVBufferRelease)
+mtgldebug_glFunction_implementer(CFRelease)
 #endif
 
 #ifdef MTGLDEBUG_PLATFORM_ANDROID
-                            mtgldebug_glFunction_implementer(eglCreateContext);
+mtgldebug_glFunction_implementer(eglCreateContext);
 #endif
+
+// clang-format on
 
 // releaceFunc
 void ReplaceFunc(const char *funcName, const void *originFuncAddress, void **originFunc, void **replaceFunc) {

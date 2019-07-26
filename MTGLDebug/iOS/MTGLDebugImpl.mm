@@ -42,13 +42,11 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
     };
     _delegate = delegate;
     GLDebug::MTGLDebugCore::sharedMTGLDebugCore()->errorMessageHandler = block;
-    
 }
 
 + (id<MTGLDebugErrorMessageDelegate>)delegate {
     return _delegate;
 }
-
 
 + (void)setErrorType:(MTGLDebugErrorType)errorType {
     GLDebug::MTGLDebugCore::SetGLDebugErrorType((MTGLDebugCoreErrorType)errorType);
@@ -56,7 +54,7 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
 + (MTGLDebugErrorType)errorType {
     return (MTGLDebugErrorType)GLDebug::MTGLDebugCore::GLDebugErrorType();
 }
-//#ifdef UNITTEST
+
 + (BOOL)isEnableGLDebugException {
     return GLDebug::MTGLDebugCore::isEnableGLDebugException();
 }
@@ -64,7 +62,6 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
 + (void)setEnableGLDebugException:(BOOL)enableGLDebugException {
     GLDebug::MTGLDebugCore::SetGLDebugException(enableGLDebugException);
 }
-//#endif
 
 + (BOOL)isEnableOnlyStatisticalGLObject {
     return GLDebug::MTGLDebugCore::isEnableOnlyStatisticalGLObject();
@@ -72,7 +69,7 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
 
 + (void)setEnableOnlyStatisticalGLObject:(BOOL)enableOnlyStatisticalGLObject {
     GLDebug::MTGLDebugCore::SetGLDebugOnlyStatisticalGLObject(enableOnlyStatisticalGLObject);
-    
+
     if (enableOnlyStatisticalGLObject) {
         [self setEnableGLDebugException:NO];
     } else {
@@ -126,8 +123,6 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
     }];
 }
 
-
-
 - (NSString *)projectName {
     if (!_projectName) {
         NSBundle *mainBundle = [NSBundle mainBundle];
@@ -137,8 +132,6 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
     }
     return _projectName;
 }
-
-
 
 + (size_t)fetchOpenGLESResourceMemorySize {
     return GLDebug::MTGLDebugCore_iOS::fetchOpenGLESResourceMemorySize();
@@ -191,9 +184,9 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
     return debugObj;
 }
 
-
-
 @end
+
+
 
 @implementation EAGLSharegroup (MTGLDebug)
 

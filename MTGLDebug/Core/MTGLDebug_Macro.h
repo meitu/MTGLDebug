@@ -46,7 +46,7 @@
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, ##__VA_ARGS__) // 定义LOGE类型
 #define LOGF(...) __android_log_print(ANDROID_LOG_FATAL, LOG_TAG, ##__VA_ARGS__) // 定义LOGF类型
 #define MTGLDEBUG_unsafe_printf(format, ...) \
-        LOGD(format, ##__VA_ARGS__);
+    LOGD(format, ##__VA_ARGS__);
 
 #endif
 
@@ -55,8 +55,8 @@
 #else
 
 #define MTGLDEBUG_unsafe_printf(format, ...) \
-        printf(format, ##__VA_ARGS__);       \
-        printf("\n");
+    printf(format, ##__VA_ARGS__);           \
+    printf("\n");
 
 #define MTGLDEBUG_ANDROID(x)
 
@@ -87,7 +87,6 @@
         LOGE(format, ##__VA_ARGS__);             \
         assert(false);                           \
     }
-
 
 #else
 #define MTGLDEBUG_printf(format, ...) \
