@@ -278,7 +278,7 @@ MTGLDebugCoreObject *MTGLDebugCore::addObject(MTGLDebugCoreInputObject inputObje
 #ifdef MTGLDEBUG_PLATFORM_ANDROID
             debugObject->retain();
 #else
-            if (!MTGLDebugCore::isEnableGLDebugException()) {
+            if (MTGLDebugCore::isEnableGLDebugException()) {
                 MTGLDEBUG_assert(false, "逻辑错误！！！！！此处不应有缓存");
             }
 #endif
@@ -333,7 +333,7 @@ void MTGLDebugCore::addCVObject(const MTGLDebugCoreInputObject &parentInputObjec
             shareGroupObjects->insert(std::pair<std::string, MTGLDebugCoreObject *>(parentDebugObject->objectID(), parentDebugObject));
             shareGroupObjects->insert(std::pair<std::string, MTGLDebugCoreObject *>(childDebugObject->objectID(), childDebugObject));
         } else {
-            if (!MTGLDebugCore::isEnableGLDebugException()) {
+            if (MTGLDebugCore::isEnableGLDebugException()) {
                 MTGLDEBUG_assert(false, "逻辑错误！！！！！此处不应有缓存");
             }
         }
@@ -1173,7 +1173,6 @@ std::map<MTGLDebugCoreGLAPIVersion, std::map<std::string, MTGLDebugCoreAPIInfo>>
 }
 
 void MTGLDebugCore::exception(const char *methodName, unsigned int error) {
-
     if (!MTGLDebugCore::isEnable()) {
         return;
     }

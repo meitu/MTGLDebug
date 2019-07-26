@@ -72,6 +72,12 @@ static id<MTGLDebugErrorMessageDelegate> _delegate = nil;
 
 + (void)setEnableOnlyStatisticalGLObject:(BOOL)enableOnlyStatisticalGLObject {
     GLDebug::MTGLDebugCore::SetGLDebugOnlyStatisticalGLObject(enableOnlyStatisticalGLObject);
+    
+    if (enableOnlyStatisticalGLObject) {
+        [self setEnableGLDebugException:NO];
+    } else {
+        [self setEnableGLDebugException:YES];
+    }
 }
 
 + (void)recordCurrentCallStack:(NSArray<NSString *> *)calls

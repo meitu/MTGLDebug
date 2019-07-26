@@ -157,15 +157,18 @@ void MTGLDebugCore_ProgramObjectSetShaderString(GLenum taget, unsigned int objec
         } else if (shaderType == GL_FRAGMENT_SHADER) {
             programObject->setFragmentShader(str);
         } else {
-            MTGLDEBUG_assert(false, "获取脚本类型出错");
+            if (MTGLDebugCore::isEnableGLDebugException()) {
+                MTGLDEBUG_assert(false, "获取脚本类型出错");
+            }
         }
     });
 }
 
 
 void MTGLDebugCore_FramebufferObjectSetTexture(GLenum target, unsigned int object, unsigned int texture) {
-
-    MTGLDEBUG_assert(texture, "当前Framebuffer绑定的纹理为空");
+    if (MTGLDebugCore::isEnableGLDebugException()) {
+        MTGLDEBUG_assert(texture, "当前Framebuffer绑定的纹理为空");
+    }
     MTGLDebugCore_OperateFetchedDebugObject(target, object, MTGLDebugFramebuffeCoreObjectClass, [=](MTGLDebugCoreObject *outputObject) {
         MTGLDebugFramebuffeCoreObject *fboObj = (MTGLDebugFramebuffeCoreObject *)outputObject;
         fboObj->setTexture(texture);
