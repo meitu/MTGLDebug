@@ -8,7 +8,7 @@ target 'MTGLDebugDemo' do
 
   project 'MTGLDebugDemo'
 
-  pod 'MTGLDebug', :path => '../'
+  pod 'MTGLDebug/WithAllHeader', :path => '../'
 
   target 'MTGLDebugDemoTests' do
     
