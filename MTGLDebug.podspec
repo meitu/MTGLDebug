@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "MTGLDebug"
 
-  s.version      = "3.1.1"
+  s.version      = "3.1.2"
 
   s.summary      = "An OpenGL Debugging tool for iOS"
   s.description  = "An OpenGL Debugging tool for iOS, provides the ability to track OpenGL resource memory usage and common incorrect usage of OpenGL API."
